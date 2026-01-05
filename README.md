@@ -1,5 +1,4 @@
-# recipes
-Mochkil’s Snack Attack secret recipes 
+# Mochkil’s Snack Attack secret recipes 
 🗄️ THE VAULT: Mochkil’s Culinary Database
 Welcome to the official repository for Maximum Reality culinary data. This isn't just a recipe list; it is the decoded output of the Mochkil Chatbot, a gourmet AI programmed for Michelin-star extravagance.
 📡 SYSTEM OVERVIEW
