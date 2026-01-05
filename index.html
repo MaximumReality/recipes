@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Vault | Mochkil's Recipes</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      background: #000; 
+      color: #fff; 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+    }
+
+    /* Magenta Tether */
+    header {
+      padding: 20px;
+      border-bottom: 1px solid rgba(255, 0, 255, 0.3);
+      text-align: center;
+      background: rgba(0,0,0,0.9);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .home-btn {
+      color: #ff00ff;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.8rem;
+      border: 1px solid #ff00ff;
+      padding: 8px 15px;
+      border-radius: 12px;
+      text-transform: uppercase;
+    }
+
+    .vault-hero {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .vault-title {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -1px;
+    }
+
+    .vault-subtitle {
+      font-size: 0.8rem;
+      opacity: 0.5;
+      margin-top: 5px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* Category Labels */
+    .category-label {
+      padding: 20px 20px 10px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #ff00ff;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    /* App Card Grid */
+    .recipe-grid {
+      padding: 0 20px 40px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .recipe-card {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 12px;
+      text-decoration: none;
+      color: white;
+      margin-bottom: 12px;
+      transition: transform 0.2s;
+    }
+
+    .recipe-card:active { transform: scale(0.98); }
+
+    .recipe-icon {
+      width: 55px;
+      height: 55px;
+      border-radius: 12px;
+      margin-right: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      background: #111;
+    }
+
+    .recipe-info { flex-grow: 1; }
+    .recipe-name { font-weight: 700; font-size: 1rem; }
+    .recipe-meta { font-size: 0.7rem; opacity: 0.5; }
+
+    .cook-btn {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 6px 15px;
+      border-radius: 15px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #00f2ff;
+      border: 1px solid #00f2ff;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="https://maximumreality.xyz" class="home-btn">🏠 Home Base</a>
+  </header>
+
+  <div class="vault-hero">
+    <h1 class="vault-title">THE VAULT</h1>
+    <p class="vault-subtitle">Mochkil's Coded Recipes</p>
+  </div>
+
+  <div class="recipe-grid">
+    
+    <div class="category-label">💎 Opulence Files</div>
+    
+    <a href="golden-opulence.html" class="recipe-card">
+      <div class="recipe-icon" style="border: 1px solid #FFD700;">✨</div>
+      <div class="recipe-info">
+        <div class="recipe-name">Golden Opulence</div>
+        <div class="recipe-meta">Scallops • 24K Gold • Caviar</div>
+      </div>
+      <div class="cook-btn">COOK</div>
+    </a>
+
+    <div class="category-label">🍳 Studio Fuel</div>
+
+    <a href="midnight-ramen.html" class="recipe-card">
+      <div class="recipe-icon" style="border: 1px solid #ff00ff;">🍜</div>
+      <div class="recipe-info">
+        <div class="recipe-name">Midnight Ramen</div>
+        <div class="recipe-meta">Gourmet Tech-Fuel • Quick Build</div>
+      </div>
+      <div class="cook-btn" style="color:#ff00ff; border-color:#ff00ff;">FUEL</div>
+    </a>
+
+    </div>
+
+</body>
+</html>
