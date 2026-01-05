@@ -118,6 +118,58 @@
     <span>USER: HACKER_QUEEN_LORI</span>
     <span>LOC: THE_VAULT</span>
   </div>
+<div style="padding: 15px 20px 5px;">
+  <input type="text" id="vaultSearch" onkeyup="searchVault()" placeholder="SEARCH_DATABASE..." 
+    style="width: 100%; background: #111; border: 1px solid #333; color: #00f2ff; padding: 12px; font-family: monospace; border-radius: 8px; outline: none;">
+</div>
+
+<script>
+function searchVault() {
+  let input = document.getElementById('vaultSearch').value.toLowerCase();
+  let entries = document.getElementsByClassName('recipe-entry');
+  let headers = document.getElementsByClassName('cat-header');
+  let panels = document.getElementsByClassName('link-panel');
+
+  // Loop through all recipe links
+  for (let i = 0; i < entries.length; i++) {
+    if (entries[i].innerText.toLowerCase().includes(input)) {
+      entries[i].style.display = "flex";
+    } else {
+      entries[i].style.display = "none";
+    }
+  }
+
+  // Auto-expand panels and show/hide headers based on search results
+  for (let j = 0; j < headers.length; j++) {
+    let panel = headers[j].nextElementSibling;
+    let hasVisibleLink = false;
+    let linksInPanel = panel.getElementsByClassName('recipe-entry');
+    
+    for (let k = 0; k < linksInPanel.length; k++) {
+      if (linksInPanel[k].style.display !== "none") {
+        hasVisibleLink = true;
+        break;
+      }
+    }
+
+    if (input === "") {
+      // Reset to closed state if search is empty
+      headers[j].style.display = "flex";
+      headers[j].classList.remove("active");
+      panel.style.maxHeight = null;
+    } else if (hasVisibleLink) {
+      headers[j].style.display = "flex";
+      headers[j].classList.add("active");
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } else {
+      headers[j].style.display = "none";
+      panel.style.maxHeight = null;
+    }
+  }
+}
+
+// Keep your existing Accordion Logic below this!
+</script>
 
   <section class="recipe-section">
 
