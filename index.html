@@ -3,23 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Vault | Mochkil's Recipes</title>
+  <title>The Vault | Maximum Reality</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #000; color: #fff; font-family: -apple-system, sans-serif; }
     header { padding: 15px; border-bottom: 1px solid #ff00ff; text-align: center; background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); }
     .home-btn { color: #ff00ff; text-decoration: none; font-weight: 800; font-size: 0.7rem; border: 1px solid #ff00ff; padding: 6px 12px; border-radius: 10px; text-transform: uppercase; }
-    .hero { padding: 30px 20px; text-align: center; }
-    .title { font-size: 2rem; font-weight: 900; }
-    .subtitle { font-size: 0.7rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 2px; }
-    .recipe-section { padding: 10px 20px 40px; max-width: 600px; margin: 0 auto; }
-    .cat-label { padding: 25px 0 12px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; }
-    .card { display: flex; align-items: center; background: #111; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 18px; padding: 12px; text-decoration: none; color: white; margin-bottom: 12px; }
+    .recipe-section { padding: 20px; max-width: 600px; margin: 0 auto; }
+    .cat-label { padding: 30px 0 15px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #333; margin-bottom: 15px; }
+    .card { display: flex; align-items: center; background: #111; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 18px; padding: 12px; text-decoration: none; color: white; margin-bottom: 12px; transition: 0.3s; }
     .icon { width: 50px; height: 50px; border-radius: 12px; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 22px; background: #000; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.2); }
     .info { flex-grow: 1; }
-    .name { font-weight: 700; font-size: 1rem; }
-    .meta { font-size: 0.7rem; opacity: 0.4; }
-    .btn { padding: 6px 12px; border-radius: 12px; font-size: 0.65rem; font-weight: 800; border: 1px solid; text-transform: uppercase; }
+    .name { font-weight: 700; font-size: 1rem; display: block; }
+    .tag { font-size: 0.6rem; font-weight: 800; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; margin-top: 4px; display: inline-block; }
+    .meta { font-size: 0.7rem; opacity: 0.4; display: block; margin-top: 4px; }
   </style>
 </head>
 <body>
@@ -28,82 +25,74 @@
     <a href="https://maximumreality.xyz" class="home-btn">🏠 Home Base</a>
   </header>
 
-  <div class="hero">
-    <h1 class="title">THE VAULT</h1>
-    <p class="subtitle">Mochkil's 2026 Transmission Data</p>
-  </div>
-
   <section class="recipe-section">
-    
-    <div class="cat-label" style="color: #ff00ff;">🛒 Official Gear</div>
+
+    <div class="cat-label" style="color: #ff00ff;">📡 Live Transmissions</div>
     <a href="https://maximum-reality-shop.fourthwall.com/" class="card" style="border-color: #ff00ff;">
       <div class="icon" style="border-color: #ff00ff;">🔴</div>
       <div class="info">
-        <div class="name">Snack Attack Pro Apron</div>
-        <div class="meta">Official Live Gear • Shop Now</div>
+        <span class="name">Mochkil's Red Apron</span>
+        <span class="tag" style="background: #ff00ff; color: #fff;">Official Merch</span>
+        <span class="meta">Protect your gear from kitchen chaos.</span>
       </div>
-      <div class="btn" style="color: #ff00ff; border-color: #ff00ff;">GET</div>
     </a>
 
-    <div class="cat-label" style="color: #ffd700;">💎 Opulence Files</div>
-    <a href="golden-opulence.html" class="card">
-      <div class="icon" style="border-color: #ffd700;">✨</div>
+    <div class="cat-label" style="color: #00f2ff;">🍱 Savory Archive</div>
+    
+    <a href="pizza.html" class="card">
+      <div class="icon" style="border-color: #00f2ff;">🍕</div>
       <div class="info">
-        <div class="name">Golden Opulence</div>
-        <div class="meta">Scallops • 24K Gold • Michelin Star</div>
+        <span class="name">Tidal Wave Seafood Pizza</span>
+        <span class="tag" style="border: 1px solid #00f2ff; color: #00f2ff;">Opulence Tier</span>
+        <span class="meta">Mussels, Squid, and Shrimp.</span>
       </div>
-      <div class="btn" style="color: #ffd700; border-color: #ffd700;">OPEN</div>
     </a>
 
     <a href="octopus.html" class="card">
-  <div class="icon" style="border-color: #ffd700;">🐙</div>
-  <div class="info">
-    <div class="name">Grilled Octopus</div>
-    <div class="meta">Moroccan Chermoula • Exotic Archive</div>
-  </div>
-  <div class="btn" style="color: #ffd700; border-color: #ffd700;">OPEN</div>
-</a>
+      <div class="icon" style="border-color: #ffd700;">🐙</div>
+      <div class="info">
+        <span class="name">Grilled Octopus</span>
+        <span class="tag" style="border: 1px solid #ffd700; color: #ffd700;">Exotic Archive</span>
+        <span class="meta">Moroccan Chermoula Sauce.</span>
+      </div>
+    </a>
 
-    <a href="pizza.html" class="card" style="border-color: #00f2ff;">
-  <div class="icon" style="border-color: #00f2ff;">🍕</div>
-  <div class="info">
-    <div class="name">Tidal Wave Seafood Pizza</div>
-    <div class="meta">Opulence Archive • Mussels & Squid</div>
-  </div>
-  <div class="btn" style="color: #00f2ff; border-color: #00f2ff;">OPEN</div>
-</a>
-
-    <div class="cat-label" style="color: #00f2ff;">🍳 Studio Fuel</div>
     <a href="spatzle.html" class="card">
       <div class="icon" style="border-color: #00f2ff;">🍜</div>
       <div class="info">
-        <div class="name">Spätzle mit Käsesoße</div>
-        <div class="meta">Emmental • Gruyère • Comfort Logic</div>
+        <span class="name">Spätzle mit Käsesoße</span>
+        <span class="tag" style="border: 1px solid #00f2ff; color: #00f2ff;">Studio Fuel</span>
+        <span class="meta">Azul's Quantum Physicist logic.</span>
       </div>
-      <div class="btn" style="color: #00f2ff; border-color: #00f2ff;">FUEL</div>
     </a>
 
-    <div class="cat-label" style="color: #00ff00; opacity: 1; text-shadow: 0 0 10px rgba(0, 255, 0, 0.2);">
-    📅 Seasonal Specials (2026 Roadmap)
-</div>
+    <a href="tacos.html" class="card">
+      <div class="icon" style="border-color: #00ff00;">🌮</div>
+      <div class="info">
+        <span class="name">Glazed Carnitas Tacos</span>
+        <span class="tag" style="background: #00ff00; color: #000;">Cinco De Mayo</span>
+        <span class="meta">Pumpkin Seed Green Sauce.</span>
+      </div>
+    </a>
 
-<a href="tacos.html" class="card" style="opacity: 1; border-color: #00ff00;">
-  <div class="icon" style="border-color: #00ff00;">🌮</div>
-  <div class="info">
-    <div class="name">Glazed Carnitas Tacos</div>
-    <div class="meta">Cinco de Mayo • Pumpkin Seed Green Sauce</div>
-  </div>
-  <div class="btn" style="color: #00ff00; border-color: #00ff00;">OPEN</div>
-</a>
+    <div class="cat-label" style="color: #ff00ff;">🧁 Sweet Transmissions</div>
 
-    
-    <div class="card" style="opacity: 0.5;">
+    <a href="truffles.html" class="card">
+      <div class="icon" style="border-color: #ff00ff;">👁️</div>
+      <div class="info">
+        <span class="name">Bleeding Eyeball Truffles</span>
+        <span class="tag" style="background: #ff00ff; color: #fff;">Halloween 2026</span>
+        <span class="meta">Oreo soil and raspberry blood.</span>
+      </div>
+    </a>
+
+    <div class="card" style="opacity: 0.3;">
       <div class="icon">🎄</div>
       <div class="info">
-        <div class="name">Christmas 2026 Finale</div>
-        <div class="meta">Coded for Dec 2026</div>
+        <span class="name">Christmas Grand Finale</span>
+        <span class="tag" style="border: 1px solid #fff;">Locked</span>
+        <span class="meta">Dec 2026 Deployment.</span>
       </div>
-      <div class="btn" style="color: #444; border-color: #444;">LOCKED</div>
     </div>
 
   </section>
