@@ -12,144 +12,108 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
     }
 
-    /* Magenta Tether */
     header {
-      padding: 20px;
+      padding: 15px;
       border-bottom: 1px solid rgba(255, 0, 255, 0.3);
       text-align: center;
       background: rgba(0,0,0,0.9);
       position: sticky;
       top: 0;
-      z-index: 100;
-      backdrop-filter: blur(10px);
+      z-index: 1000;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
     }
 
     .home-btn {
       color: #ff00ff;
       text-decoration: none;
       font-weight: 800;
-      font-size: 0.8rem;
-      border: 1px solid #ff00ff;
-      padding: 8px 15px;
-      border-radius: 12px;
-      text-transform: uppercase;
-    }
-
-    .vault-hero {
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .vault-title {
-      font-size: 2rem;
-      font-weight: 900;
-      color: #fff;
-      letter-spacing: -1px;
-    }
-
-    .vault-subtitle {
-      font-size: 0.8rem;
-      opacity: 0.5;
-      margin-top: 5px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    /* Category Labels */
-    .category-label {
-      padding: 20px 20px 10px;
       font-size: 0.75rem;
-      font-weight: 800;
-      color: #ff00ff;
+      border: 1px solid #ff00ff;
+      padding: 6px 12px;
+      border-radius: 10px;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
     }
 
-    /* App Card Grid */
-    .recipe-grid {
-      padding: 0 20px 40px;
-      max-width: 600px;
-      margin: 0 auto;
+    .hero {
+      padding: 30px 20px;
+      text-align: center;
+      background: linear-gradient(to bottom, #0a0a0a, #000);
     }
 
-    .recipe-card {
-      display: flex;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.05);
+    .title { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.5px; }
+    .subtitle { font-size: 0.7rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; }
+
+    .recipe-section { padding: 10px 20px 40px; max-width: 600px; margin: 0 auto; }
+    .cat-label { padding: 25px 0 12px; font-size: 0.7rem; font-weight: 800; color: #ff00ff; text-transform: uppercase; letter-spacing: 1.5px; }
+
+    .card {
+      display: flex; align-items: center; 
+      background: rgba(255, 255, 255, 0.05); 
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 12px;
-      text-decoration: none;
-      color: white;
+      border-radius: 18px; padding: 12px; 
+      text-decoration: none; color: white; 
       margin-bottom: 12px;
-      transition: transform 0.2s;
+      transition: background 0.2s;
     }
+    .card:active { background: rgba(255, 255, 255, 0.1); }
 
-    .recipe-card:active { transform: scale(0.98); }
+    .icon { width: 50px; height: 50px; border-radius: 12px; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 22px; background: #111; flex-shrink: 0; }
+    .info { flex-grow: 1; }
+    .name { font-weight: 700; font-size: 1rem; }
+    .meta { font-size: 0.7rem; opacity: 0.4; margin-top: 2px; }
 
-    .recipe-icon {
-      width: 55px;
-      height: 55px;
-      border-radius: 12px;
-      margin-right: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      background: #111;
-    }
-
-    .recipe-info { flex-grow: 1; }
-    .recipe-name { font-weight: 700; font-size: 1rem; }
-    .recipe-meta { font-size: 0.7rem; opacity: 0.5; }
-
-    .cook-btn {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 6px 15px;
-      border-radius: 15px;
-      font-size: 0.7rem;
-      font-weight: 800;
-      color: #00f2ff;
-      border: 1px solid #00f2ff;
-    }
+    .btn { padding: 6px 12px; border-radius: 12px; font-size: 0.65rem; font-weight: 800; border: 1px solid; text-transform: uppercase; }
   </style>
 </head>
 <body>
 
   <header>
-    <a href="https://maximumreality.xyz" class="home-btn">🏠 Home Base</a>
+    <a href="https://maximumreality.xyz" class="home-btn">🏠 Back to Hub</a>
   </header>
 
-  <div class="vault-hero">
-    <h1 class="vault-title">THE VAULT</h1>
-    <p class="vault-subtitle">Mochkil's Coded Recipes</p>
+  <div class="hero">
+    <h1 class="title">THE VAULT</h1>
+    <p class="subtitle">Mochkil's Culinary Coded Data</p>
   </div>
 
-  <div class="recipe-grid">
+  <section class="recipe-section">
     
-    <div class="category-label">💎 Opulence Files</div>
+    <div class="cat-label">💎 Opulence Archive</div>
     
-    <a href="golden-opulence.html" class="recipe-card">
-      <div class="recipe-icon" style="border: 1px solid #FFD700;">✨</div>
-      <div class="recipe-info">
-        <div class="recipe-name">Golden Opulence</div>
-        <div class="recipe-meta">Scallops • 24K Gold • Caviar</div>
+    <a href="golden-opulence.html" class="card">
+      <div class="icon" style="border: 1px solid #FFD700;">✨</div>
+      <div class="info">
+        <div class="name">Golden Opulence</div>
+        <div class="meta">Scallops • 24K Gold • Michelin Star</div>
       </div>
-      <div class="cook-btn">COOK</div>
+      <div class="btn" style="color: #FFD700; border-color: #FFD700;">OPEN</div>
     </a>
 
-    <div class="category-label">🍳 Studio Fuel</div>
+    <div class="cat-label">🍳 Studio Fuel (Real World)</div>
 
-    <a href="midnight-ramen.html" class="recipe-card">
-      <div class="recipe-icon" style="border: 1px solid #ff00ff;">🍜</div>
-      <div class="recipe-info">
-        <div class="recipe-name">Midnight Ramen</div>
-        <div class="recipe-meta">Gourmet Tech-Fuel • Quick Build</div>
+    <a href="midnight-ramen.html" class="card">
+      <div class="icon" style="border: 1px solid #00f2ff;">🍜</div>
+      <div class="info">
+        <div class="name">Midnight Ramen</div>
+        <div class="meta">Developer Fuel • Quick Build</div>
       </div>
-      <div class="cook-btn" style="color:#ff00ff; border-color:#ff00ff;">FUEL</div>
+      <div class="btn" style="color: #00f2ff; border-color: #00f2ff;">FUEL</div>
     </a>
 
+    <div class="cat-label">📅 Future Transmissions</div>
+
+    <div class="card" style="opacity: 0.6;">
+      <div class="icon" style="border: 1px solid #ff00ff;">🍓</div>
+      <div class="info">
+        <div class="name">Valentine's Snack Attack</div>
+        <div class="meta">Encrypted • Decrypting Feb 14</div>
+      </div>
+      <div class="btn" style="color: #ff00ff; border-color: #ff00ff;">LOCKED</div>
     </div>
+
+  </section>
 
 </body>
 </html>
