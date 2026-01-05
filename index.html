@@ -9,82 +9,49 @@
     body { background: #000; color: #fff; font-family: -apple-system, sans-serif; }
     
     header { 
-      padding: 15px; 
-      border-bottom: 1px solid #ff00ff; 
-      text-align: center; 
-      background: rgba(0,0,0,0.9); 
-      position: sticky; 
-      top: 0; 
-      z-index: 1000; 
-      backdrop-filter: blur(10px); 
+      padding: 15px; border-bottom: 1px solid #ff00ff; text-align: center; 
+      background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); 
     }
     
     .home-btn { 
-      color: #ff00ff; 
-      text-decoration: none; 
-      font-weight: 800; 
-      font-size: 0.7rem; 
-      border: 1px solid #ff00ff; 
-      padding: 6px 12px; 
-      border-radius: 10px; 
-      text-transform: uppercase; 
+      color: #ff00ff; text-decoration: none; font-weight: 800; font-size: 0.7rem; 
+      border: 1px solid #ff00ff; padding: 6px 12px; border-radius: 10px; text-transform: uppercase; 
     }
 
     .status-bar {
-      background: #111;
-      color: #32cd32;
-      font-family: monospace;
-      font-size: 0.6rem;
-      padding: 5px 20px;
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid #222;
+      background: #111; color: #32cd32; font-family: monospace; font-size: 0.6rem;
+      padding: 5px 20px; display: flex; justify-content: space-between; border-bottom: 1px solid #222;
     }
+
+    /* SEARCH INPUT */
+    #vaultSearch {
+      width: 100%; background: #111; border: 1px solid #333; color: #00f2ff; 
+      padding: 12px; font-family: monospace; border-radius: 8px; outline: none; transition: 0.3s;
+    }
+    #vaultSearch:focus { border-color: #00f2ff; box-shadow: 0 0 10px rgba(0, 242, 255, 0.3); }
 
     .recipe-section { padding: 10px 20px 40px; max-width: 600px; margin: 0 auto; }
 
     /* ACCORDION BUTTONS */
     .cat-header {
-      width: 100%;
-      background: #000;
-      color: #00f2ff;
-      border: 1px solid #00f2ff;
-      padding: 18px;
-      text-align: left;
-      font-size: 0.75rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-top: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: 0.3s;
+      width: 100%; background: #000; color: #00f2ff; border: 1px solid #00f2ff; 
+      padding: 18px; text-align: left; font-size: 0.75rem; font-weight: 800; 
+      letter-spacing: 2px; text-transform: uppercase; margin-top: 12px; 
+      display: flex; justify-content: space-between; align-items: center; transition: 0.3s;
     }
 
     .cat-header.plugin { color: #ffd700; border-color: #ffd700; }
     .cat-header.holiday { color: #ff00ff; border-color: #ff00ff; }
     .cat-header.sweet { color: #ff007f; border-color: #ff007f; }
 
-    /* HIDDEN PANELS */
     .link-panel {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease-out;
-      background: rgba(255, 255, 255, 0.02);
-      border-left: 1px solid #222;
-      border-right: 1px solid #222;
+      max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out;
+      background: rgba(255, 255, 255, 0.02); border-left: 1px solid #222; border-right: 1px solid #222;
     }
 
-    /* RECIPE LINKS */
     .recipe-entry {
-      display: flex;
-      align-items: center;
-      padding: 16px 15px;
-      text-decoration: none;
-      color: #ddd;
-      border-bottom: 1px solid #1a1a1a;
-      font-size: 0.95rem;
+      display: flex; align-items: center; padding: 16px 15px; text-decoration: none; 
+      color: #ddd; border-bottom: 1px solid #1a1a1a; font-size: 0.95rem;
     }
 
     .recipe-entry:last-child { border-bottom: none; }
@@ -95,81 +62,24 @@
     .active .arrow { transform: rotate(180deg); opacity: 1; }
     
     .shop-card {
-      margin-top: 20px;
-      background: linear-gradient(45deg, #111, #000);
-      border: 1px solid #ff00ff;
-      padding: 15px;
-      border-radius: 15px;
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      color: white;
+      margin-top: 20px; background: linear-gradient(45deg, #111, #000); border: 1px solid #ff00ff; 
+      padding: 15px; border-radius: 15px; display: flex; align-items: center; text-decoration: none; color: white;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <a href="https://maximumreality.xyz" class="home-btn">🏠 Home Base</a>
-  </header>
+  <header><a href="https://maximumreality.xyz" class="home-btn">🏠 Home Base</a></header>
 
   <div class="status-bar">
     <span>SYSTEM: ONLINE</span>
     <span>USER: HACKER_QUEEN_LORI</span>
     <span>LOC: THE_VAULT</span>
   </div>
-<div style="padding: 15px 20px 5px;">
-  <input type="text" id="vaultSearch" onkeyup="searchVault()" placeholder="SEARCH_DATABASE..." 
-    style="width: 100%; background: #111; border: 1px solid #333; color: #00f2ff; padding: 12px; font-family: monospace; border-radius: 8px; outline: none;">
-</div>
 
-<script>
-function searchVault() {
-  let input = document.getElementById('vaultSearch').value.toLowerCase();
-  let entries = document.getElementsByClassName('recipe-entry');
-  let headers = document.getElementsByClassName('cat-header');
-  let panels = document.getElementsByClassName('link-panel');
-
-  // Loop through all recipe links
-  for (let i = 0; i < entries.length; i++) {
-    if (entries[i].innerText.toLowerCase().includes(input)) {
-      entries[i].style.display = "flex";
-    } else {
-      entries[i].style.display = "none";
-    }
-  }
-
-  // Auto-expand panels and show/hide headers based on search results
-  for (let j = 0; j < headers.length; j++) {
-    let panel = headers[j].nextElementSibling;
-    let hasVisibleLink = false;
-    let linksInPanel = panel.getElementsByClassName('recipe-entry');
-    
-    for (let k = 0; k < linksInPanel.length; k++) {
-      if (linksInPanel[k].style.display !== "none") {
-        hasVisibleLink = true;
-        break;
-      }
-    }
-
-    if (input === "") {
-      // Reset to closed state if search is empty
-      headers[j].style.display = "flex";
-      headers[j].classList.remove("active");
-      panel.style.maxHeight = null;
-    } else if (hasVisibleLink) {
-      headers[j].style.display = "flex";
-      headers[j].classList.add("active");
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    } else {
-      headers[j].style.display = "none";
-      panel.style.maxHeight = null;
-    }
-  }
-}
-
-// Keep your existing Accordion Logic below this!
-</script>
+  <div style="padding: 15px 20px 5px;">
+    <input type="text" id="vaultSearch" onkeyup="searchVault()" placeholder="SEARCH_DATABASE...">
+  </div>
 
   <section class="recipe-section">
 
@@ -243,19 +153,44 @@ function searchVault() {
   </section>
 
   <script>
-    var acc = document.getElementsByClassName("cat-header");
-    var i;
+    // 1. SEARCH LOGIC
+    function searchVault() {
+      let input = document.getElementById('vaultSearch').value.toLowerCase();
+      let entries = document.getElementsByClassName('recipe-entry');
+      let headers = document.getElementsByClassName('cat-header');
+      let panels = document.getElementsByClassName('link-panel');
 
-    for (i = 0; i < acc.length; i++) {
+      for (let i = 0; i < entries.length; i++) {
+        entries[i].style.display = entries[i].innerText.toLowerCase().includes(input) ? "flex" : "none";
+      }
+
+      for (let j = 0; j < headers.length; j++) {
+        let panel = headers[j].nextElementSibling;
+        let linksInPanel = panel.getElementsByClassName('recipe-entry');
+        let hasVisibleLink = Array.from(linksInPanel).some(link => link.style.display !== "none");
+
+        if (input === "") {
+          headers[j].style.display = "flex";
+          headers[j].classList.remove("active");
+          panel.style.maxHeight = null;
+        } else if (hasVisibleLink) {
+          headers[j].style.display = "flex";
+          headers[j].classList.add("active");
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        } else {
+          headers[j].style.display = "none";
+          panel.style.maxHeight = null;
+        }
+      }
+    }
+
+    // 2. ACCORDION LOGIC
+    var acc = document.getElementsByClassName("cat-header");
+    for (var i = 0; i < acc.length; i++) {
       acc[i].addEventListener("click", function() {
         this.classList.toggle("active");
         var panel = this.nextElementSibling;
-        if (panel.style.maxHeight) {
-          panel.style.maxHeight = null;
-        } else {
-          // Setting maxHeight to scrollHeight allows for smooth expansion
-          panel.style.maxHeight = panel.scrollHeight + "px";
-        }
+        panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
       });
     }
   </script>
