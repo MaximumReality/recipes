@@ -110,7 +110,10 @@
       <a href="monkey-meat.html" class="recipe-entry"><span>🐒</span> Mochkil's "Monkey Meat" (Jackfruit)</a>
       <a href="salmon-nuggets.html" class="recipe-entry"><span>🍣</span> Miso Salmon Nuggets (Crunch Tech)</a>
       <a href="clucking-good.html" class="recipe-entry"><span>🍗</span> "Clucking Good" Roast Chicken (Maple Soy)</a>
-      <a href="chaos-jar.html" class="recipe-entry" style="color: #ff0000; font-weight: bold;"><span>☢️</span> THE CHAOS JAR (Snack Apocalypse)</a>
+      <a href="javascript:void(0)" onclick="triggerChaosWarning()" class="recipe-entry" style="color: #ff0000; font-weight: bold;">
+  <span>☢️</span> THE CHAOS JAR (Snack Apocalypse)
+</a>
+
 
     </div>
 
@@ -200,7 +203,40 @@
         panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
       });
     }
+    function triggerChaosWarning() {
+  document.getElementById('chaosOverlay').style.display = 'flex';
+}
+
+function abortChaos() {
+  document.getElementById('chaosOverlay').style.display = 'none';
+}
+
+function proceedToChaos() {
+  window.location.href = "chaos-jar.html";
+}
+
   </script>
+<div id="chaosOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px; font-family:monospace; border: 4px solid #ff0000;">
+  
+  <div style="color: #ff0000; font-size: 3rem; margin-bottom: 20px; animation: blink 0.2s infinite;">⚠️</div>
+  
+  <h2 style="color: #ff0000; margin-bottom: 15px; letter-spacing: 2px;">CRITICAL_DATA_CORRUPTION</h2>
+  
+  <p style="color: #fff; font-size: 0.9rem; max-width: 400px; margin-bottom: 30px; line-height: 1.5;">
+    You are attempting to access <span style="color:#ff0000;">[MOCHKIL_CHAOS_JAR]</span>. <br><br>
+    This file contains high-density flavor anomalies (Pickles + Whipped Cream). <br><br>
+    Viewing may cause culinary confusion or Snack Apocalypse.
+  </p>
+
+  <div style="display:flex; gap: 20px;">
+    <button onclick="abortChaos()" style="background:#222; color:#fff; border:1px solid #fff; padding:10px 20px; cursor:pointer;">ABORT_MISSION</button>
+    <button onclick="proceedToChaos()" style="background:#ff0000; color:#000; border:none; padding:10px 20px; font-weight:bold; cursor:pointer;">I_ACCEPT_THE_RISK</button>
+  </div>
+</div>
+
+<style>
+  @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+</style>
 
 </body>
 </html>
