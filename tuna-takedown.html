@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mochkil's Tuna Tartare | Recipe Vault</title>
+  <style>
+    :root { --chef-green: #32cd32; --syrup-pink: #ff00ff; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #000; color: #fff; font-family: -apple-system, sans-serif; line-height: 1.6; }
+
+    /* Header & Logo */
+    header { padding: 20px; text-align: center; border-bottom: 2px solid var(--chef-green); background: rgba(0,0,0,0.9); }
+    .vault-tag { font-family: monospace; color: var(--chef-green); font-size: 0.7rem; letter-spacing: 3px; }
+
+    /* Hero Section */
+    .recipe-hero { width: 100%; position: relative; overflow: hidden; height: 300px; }
+    .recipe-hero img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
+    .recipe-title-box { position: absolute; bottom: 20px; left: 20px; }
+    .recipe-title { font-size: 2rem; font-weight: 900; text-transform: uppercase; line-height: 0.9; }
+
+    /* Content Area */
+    .container { max-width: 600px; margin: 0 auto; padding: 30px 20px; }
+    
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 30px; }
+    .stat-card { background: #111; padding: 15px; border-radius: 12px; border: 1px solid #222; text-align: center; }
+    .stat-val { display: block; font-size: 1.2rem; font-weight: bold; color: var(--chef-green); }
+    .stat-lbl { font-size: 0.6rem; text-transform: uppercase; opacity: 0.5; }
+
+    .section-h { font-size: 1rem; color: var(--chef-green); text-transform: uppercase; margin-bottom: 15px; border-left: 3px solid var(--chef-green); padding-left: 10px; }
+
+    ul { list-style: none; margin-bottom: 30px; }
+    li { background: rgba(255,255,255,0.05); margin-bottom: 5px; padding: 10px 15px; border-radius: 8px; font-size: 0.9rem; }
+    
+    /* Assembly Steps */
+    .step { margin-bottom: 25px; position: relative; padding-left: 40px; }
+    .step-num { position: absolute; left: 0; top: 0; width: 30px; height: 30px; background: var(--chef-green); color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem; }
+    .step-txt { font-weight: bold; margin-bottom: 5px; display: block; }
+    .step-desc { font-size: 0.85rem; opacity: 0.7; display: block; }
+
+    .chef-note { background: rgba(50, 205, 50, 0.1); border: 1px dashed var(--chef-green); padding: 15px; border-radius: 12px; font-size: 0.8rem; font-style: italic; }
+
+    /* Thermal Receipt Style Print Button */
+    .print-btn { 
+      display: block; width: 100%; padding: 15px; margin-top: 40px; 
+      background: #eee; color: #000; text-align: center; 
+      text-decoration: none; font-weight: 800; font-family: monospace;
+      border-radius: 2px; box-shadow: 5px 5px 0px var(--chef-green);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="vault-tag">SECTOR_02 // KITCHEN</div>
+    <div style="font-weight: 900; font-size: 1.2rem;">RECIPE VAULT</div>
+  </header>
+
+  <div class="recipe-hero">
+    <img src="https://maximumreality.xyz/logo.png" alt="Tuna Tartare">
+    <div class="recipe-title-box">
+      <div class="recipe-title">TUNA<br><span style="color:var(--chef-green)">TAKEDOWN</span></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card"><span class="stat-val">15m</span><span class="stat-lbl">Prep Time</span></div>
+      <div class="stat-card"><span class="stat-val">Chef</span><span class="stat-lbl">Mochkil</span></div>
+    </div>
+
+    <h3 class="section-h">Ingredients</h3>
+    <ul>
+      <li>12 oz Sashimi-grade Tuna (Diced)</li>
+      <li>1/2 cup Soy Sauce + 1/4 cup Yuzu</li>
+      <li>2 tbsp Wasabi Mayo</li>
+      <li>1 tsp Grated Ginger</li>
+      <li>Microgreens & Toasted Sesame Seeds</li>
+      <li>Crispy Garlic & Edible Flowers</li>
+    </ul>
+
+    <h3 class="section-h">Assembly Protocol</h3>
+    
+    <div class="step">
+      <span class="step-num">1</span>
+      <span class="step-txt">The Tuna Matrix</span>
+      <span class="step-desc">Marinate cubes in soy, yuzu, and ginger. Place in a neat row on the left side of the plate. Alignment is key.</span>
+    </div>
+
+    <div class="step">
+      <span class="step-num">2</span>
+      <span class="step-txt">Wasabi Cloud</span>
+      <span class="step-desc">Dollop wasabi cream next to the tuna. Think "abstract art," not "messy kitchen."</span>
+    </div>
+
+    <div class="step">
+      <span class="step-num">3</span>
+      <span class="step-txt">The Crunch Factor</span>
+      <span class="step-desc">Sprinkle toasted sesame seeds and crispy garlic over the cream. This is where the magic happens.</span>
+    </div>
+
+    <div class="step">
+      <span class="step-num">4</span>
+      <span class="step-txt">Green Sector</span>
+      <span class="step-desc">Toss microgreens with yuzu and place on the opposite side. Balance the plate.</span>
+    </div>
+
+    <div class="chef-note">
+      "Dine like a chef: Pick up tuna, dip in wasabi cream, crunch sesame seeds... MAGIC." — Chef Mochkil
+    </div>
+
+    <a href="javascript:window.print()" class="print-btn">GENERATE_THERMAL_RECEIPT.EXE</a>
+  </div>
+
+</body>
+</html>
