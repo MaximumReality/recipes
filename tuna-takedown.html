@@ -10,14 +10,14 @@
     body { background: #000; color: #fff; font-family: -apple-system, sans-serif; line-height: 1.6; }
 
     /* Header & Logo */
-    header { padding: 20px; text-align: center; border-bottom: 2px solid var(--chef-green); background: rgba(0,0,0,0.9); }
+    header { padding: 20px; text-align: center; border-bottom: 2px solid var(--chef-green); background: rgba(0,0,0,0.9); position: relative; z-index: 10; }
     .vault-tag { font-family: monospace; color: var(--chef-green); font-size: 0.7rem; letter-spacing: 3px; }
 
-    /* Hero Section */
-    .recipe-hero { width: 100%; position: relative; overflow: hidden; height: 300px; }
-    .recipe-hero img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
-    .recipe-title-box { position: absolute; bottom: 20px; left: 20px; }
-    .recipe-title { font-size: 2rem; font-weight: 900; text-transform: uppercase; line-height: 0.9; }
+    /* Hero Section with Video Support */
+    .recipe-hero { width: 100%; position: relative; overflow: hidden; height: 350px; background: #111; }
+    .hero-video { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; filter: contrast(1.2) brightness(0.8); }
+    .recipe-title-box { position: absolute; bottom: 30px; left: 20px; z-index: 5; }
+    .recipe-title { font-size: 2.2rem; font-weight: 900; text-transform: uppercase; line-height: 0.9; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
 
     /* Content Area */
     .container { max-width: 600px; margin: 0 auto; padding: 30px 20px; }
@@ -30,19 +30,26 @@
     .section-h { font-size: 1rem; color: var(--chef-green); text-transform: uppercase; margin-bottom: 15px; border-left: 3px solid var(--chef-green); padding-left: 10px; }
 
     ul { list-style: none; margin-bottom: 30px; }
-    li { background: rgba(255,255,255,0.05); margin-bottom: 5px; padding: 10px 15px; border-radius: 8px; font-size: 0.9rem; }
+    li { background: rgba(255,255,255,0.05); margin-bottom: 5px; padding: 10px 15px; border-radius: 8px; font-size: 0.9rem; border-left: 1px solid rgba(50, 205, 50, 0.2); }
     
     /* Assembly Steps */
-    .step { margin-bottom: 25px; position: relative; padding-left: 40px; }
-    .step-num { position: absolute; left: 0; top: 0; width: 30px; height: 30px; background: var(--chef-green); color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem; }
-    .step-txt { font-weight: bold; margin-bottom: 5px; display: block; }
+    .step { margin-bottom: 25px; position: relative; padding-left: 45px; }
+    .step-num { position: absolute; left: 0; top: 0; width: 32px; height: 32px; background: var(--chef-green); color: #000; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem; transform: rotate(-5deg); }
+    .step-txt { font-weight: bold; margin-bottom: 5px; display: block; font-size: 1.1rem; }
     .step-desc { font-size: 0.85rem; opacity: 0.7; display: block; }
 
-    .chef-note { background: rgba(50, 205, 50, 0.1); border: 1px dashed var(--chef-green); padding: 15px; border-radius: 12px; font-size: 0.8rem; font-style: italic; }
+    .chef-note { background: rgba(50, 205, 50, 0.1); border: 1px dashed var(--chef-green); padding: 20px; border-radius: 15px; font-size: 0.85rem; position: relative; margin-top: 40px; }
+    .chef-note::before { content: '👨‍🍳'; position: absolute; top: -15px; left: 20px; font-size: 1.5rem; background: #000; padding: 0 10px; }
 
-    /* Thermal Receipt Style Print Button */
+    /* Rating System - Michelin vs Chaos */
+    .rating-zone { margin-top: 40px; text-align: center; border-top: 1px solid #222; padding-top: 30px; }
+    .rating-title { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; opacity: 0.6; }
+    .btn-group { display: flex; gap: 10px; justify-content: center; }
+    .rate-btn { flex: 1; padding: 12px; border-radius: 10px; border: 1px solid #333; background: #111; color: #fff; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; transition: 0.3s; }
+    .rate-btn:active { transform: scale(0.95); background: var(--chef-green); color: #000; border-color: var(--chef-green); }
+
     .print-btn { 
-      display: block; width: 100%; padding: 15px; margin-top: 40px; 
+      display: block; width: 100%; padding: 15px; margin-top: 30px; 
       background: #eee; color: #000; text-align: center; 
       text-decoration: none; font-weight: 800; font-family: monospace;
       border-radius: 2px; box-shadow: 5px 5px 0px var(--chef-green);
@@ -57,7 +64,10 @@
   </header>
 
   <div class="recipe-hero">
-    <img src="https://maximumreality.xyz/logo.png" alt="Tuna Tartare">
+    <video class="hero-video" autoplay loop muted playsinline poster="https://maximumreality.xyz/logo.png">
+      <source src="tuna_tartare.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
     <div class="recipe-title-box">
       <div class="recipe-title">TUNA<br><span style="color:var(--chef-green)">TAKEDOWN</span></div>
     </div>
@@ -107,6 +117,14 @@
 
     <div class="chef-note">
       "Dine like a chef: Pick up tuna, dip in wasabi cream, crunch sesame seeds... MAGIC." — Chef Mochkil
+    </div>
+
+    <div class="rating-zone">
+      <div class="rating-title">Rate this Transmission</div>
+      <div class="btn-group">
+        <button class="rate-btn" onclick="this.innerHTML='🌟 MICHELIN STAR!'">Michelin Star</button>
+        <button class="rate-btn" onclick="this.innerHTML='🔥 TOTAL CHAOS!'">Total Chaos</button>
+      </div>
     </div>
 
     <a href="javascript:window.print()" class="print-btn">GENERATE_THERMAL_RECEIPT.EXE</a>
