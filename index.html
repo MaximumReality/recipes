@@ -13,9 +13,17 @@
       background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); 
     }
     
+    /* Style Switcher UI */
+    .style-switcher { padding: 10px; display: flex; justify-content: center; gap: 10px; background: rgba(255, 0, 255, 0.05); border-radius: 30px; margin: 10px auto; max-width: fit-content; border: 1px solid rgba(255, 0, 255, 0.2); }
+    .switch-btn { font-size: 0.6rem; font-weight: 900; text-decoration: none; color: #555; border: 1px solid #333; padding: 5px 12px; border-radius: 20px; letter-spacing: 1px; transition: 0.3s; }
+    
+    /* Highlight the current style */
+    body.classic-page #classic-view { color: #ff00ff; border-color: #ff00ff; background: rgba(255, 0, 255, 0.1); }
+
     .home-btn { 
       color: #ff00ff; text-decoration: none; font-weight: 800; font-size: 0.7rem; 
       border: 1px solid #ff00ff; padding: 6px 12px; border-radius: 10px; text-transform: uppercase; 
+      display: inline-block; margin-bottom: 10px;
     }
 
     .status-bar {
@@ -65,11 +73,20 @@
       margin-top: 20px; background: linear-gradient(45deg, #111, #000); border: 1px solid #ff00ff; 
       padding: 15px; border-radius: 15px; display: flex; align-items: center; text-decoration: none; color: white;
     }
+
+    /* Chaos Warning Styles */
+    @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
   </style>
 </head>
-<body>
+<body class="classic-page">
 
-  <header><a href="https://maximumreality.xyz" class="home-btn">🏠 Home Base</a></header>
+  <header>
+    <a href="https://maximumreality.xyz" class="home-btn">🏠 Home Base</a>
+    <div class="style-switcher">
+      <a href="index.html" class="switch-btn" id="classic-view" onclick="setStyle('classic')">📂 CLASSIC_LIST</a>
+      <a href="featured-index.html" class="switch-btn" id="featured-view" onclick="setStyle('featured')">🎬 LIVE_FEED</a>
+    </div>
+  </header>
 
   <div class="status-bar">
     <span>SYSTEM: ONLINE</span>
@@ -93,6 +110,8 @@
 
     <button class="cat-header"> [ 01 ] MAIN_COURSES <span class="arrow">▼</span></button>
     <div class="link-panel">
+      <a href="tuna-takedown.html" class="recipe-entry" style="color: #32cd32; font-weight: bold;"><span>🍣</span> Tuna Tartare Takedown</a>
+      
       <a href="bicol-express.html" class="recipe-entry"><span>🥘</span> Bicol Express</a>
       <a href="lamb-tagine.html" class="recipe-entry"><span>🥘</span> Moroccan Lamb Tagine</a>
       <a href="hachis-parmentier.html" class="recipe-entry"><span>🥧</span> Hachis Parmentier</a>
@@ -111,10 +130,8 @@
       <a href="salmon-nuggets.html" class="recipe-entry"><span>🍣</span> Miso Salmon Nuggets (Crunch Tech)</a>
       <a href="clucking-good.html" class="recipe-entry"><span>🍗</span> "Clucking Good" Roast Chicken (Maple Soy)</a>
       <a href="javascript:void(0)" onclick="triggerChaosWarning()" class="recipe-entry" style="color: #ff0000; font-weight: bold;">
-  <span>☢️</span> THE CHAOS JAR (Snack Apocalypse)
-</a>
-
-
+        <span>☢️</span> THE CHAOS JAR (Snack Apocalypse)
+      </a>
     </div>
 
     <button class="cat-header"> [ 02 ] SIDES_&_SALADS <span class="arrow">▼</span></button>
@@ -143,8 +160,7 @@
       <a href="baghrir.html" class="recipe-entry"><span>🥞</span> Mochkil's Magic Baghrir</a>
       <a href="macarons.html" class="recipe-entry"><span>🧁</span> Secret Macaron Tutorial</a>
       <a href="croquembouche.html" class="recipe-entry"><span>🗼</span> Lemon Lavender Croquembouche</a>
-      <a href="galaxy-puffs.html" class="recipe-entry"><span>🌌</span> Galaxy Puff Cookie Tower (Intergalactic Tier)</a>
-
+      <a href="galaxy-puffs.html" class="recipe-entry"><span>🌌</span> Galaxy Puff Cookie Tower</a>
     </div>
 
     <button class="cat-header holiday"> [ 05 ] HOLIDAY_PROTOCOLS <span class="arrow">▼</span></button>
@@ -162,13 +178,30 @@
 
   </section>
 
+  <div id="chaosOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px; font-family:monospace; border: 4px solid #ff0000;">
+    <div style="color: #ff0000; font-size: 3rem; margin-bottom: 20px; animation: blink 0.2s infinite;">⚠️</div>
+    <h2 style="color: #ff0000; margin-bottom: 15px; letter-spacing: 2px;">CRITICAL_DATA_CORRUPTION</h2>
+    <p style="color: #fff; font-size: 0.9rem; max-width: 400px; margin-bottom: 30px; line-height: 1.5;">
+      You are attempting to access <span style="color:#ff0000;">[MOCHKIL_CHAOS_JAR]</span>. <br><br>
+      Viewing may cause culinary confusion or Snack Apocalypse.
+    </p>
+    <div style="display:flex; gap: 20px;">
+      <button onclick="abortChaos()" style="background:#222; color:#fff; border:1px solid #fff; padding:10px 20px; cursor:pointer;">ABORT_MISSION</button>
+      <button onclick="proceedToChaos()" style="background:#ff0000; color:#000; border:none; padding:10px 20px; font-weight:bold; cursor:pointer;">I_ACCEPT_THE_RISK</button>
+    </div>
+  </div>
+
   <script>
-    // 1. SEARCH LOGIC
+    // 1. STYLE MEMORY
+    function setStyle(style) {
+      localStorage.setItem('vaultStyle', style);
+    }
+
+    // 2. SEARCH LOGIC
     function searchVault() {
       let input = document.getElementById('vaultSearch').value.toLowerCase();
       let entries = document.getElementsByClassName('recipe-entry');
       let headers = document.getElementsByClassName('cat-header');
-      let panels = document.getElementsByClassName('link-panel');
 
       for (let i = 0; i < entries.length; i++) {
         entries[i].style.display = entries[i].innerText.toLowerCase().includes(input) ? "flex" : "none";
@@ -194,7 +227,7 @@
       }
     }
 
-    // 2. ACCORDION LOGIC
+    // 3. ACCORDION LOGIC
     var acc = document.getElementsByClassName("cat-header");
     for (var i = 0; i < acc.length; i++) {
       acc[i].addEventListener("click", function() {
@@ -203,40 +236,12 @@
         panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
       });
     }
-    function triggerChaosWarning() {
-  document.getElementById('chaosOverlay').style.display = 'flex';
-}
 
-function abortChaos() {
-  document.getElementById('chaosOverlay').style.display = 'none';
-}
-
-function proceedToChaos() {
-  window.location.href = "chaos-jar.html";
-}
-
+    // 4. CHAOS OVERLAY LOGIC
+    function triggerChaosWarning() { document.getElementById('chaosOverlay').style.display = 'flex'; }
+    function abortChaos() { document.getElementById('chaosOverlay').style.display = 'none'; }
+    function proceedToChaos() { window.location.href = "chaos-jar.html"; }
   </script>
-<div id="chaosOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px; font-family:monospace; border: 4px solid #ff0000;">
-  
-  <div style="color: #ff0000; font-size: 3rem; margin-bottom: 20px; animation: blink 0.2s infinite;">⚠️</div>
-  
-  <h2 style="color: #ff0000; margin-bottom: 15px; letter-spacing: 2px;">CRITICAL_DATA_CORRUPTION</h2>
-  
-  <p style="color: #fff; font-size: 0.9rem; max-width: 400px; margin-bottom: 30px; line-height: 1.5;">
-    You are attempting to access <span style="color:#ff0000;">[MOCHKIL_CHAOS_JAR]</span>. <br><br>
-    This file contains high-density flavor anomalies (Pickles + Whipped Cream). <br><br>
-    Viewing may cause culinary confusion or Snack Apocalypse.
-  </p>
-
-  <div style="display:flex; gap: 20px;">
-    <button onclick="abortChaos()" style="background:#222; color:#fff; border:1px solid #fff; padding:10px 20px; cursor:pointer;">ABORT_MISSION</button>
-    <button onclick="proceedToChaos()" style="background:#ff0000; color:#000; border:none; padding:10px 20px; font-weight:bold; cursor:pointer;">I_ACCEPT_THE_RISK</button>
-  </div>
-</div>
-
-<style>
-  @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
-</style>
 
 </body>
 </html>
