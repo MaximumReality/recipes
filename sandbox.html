@@ -5,172 +5,417 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Vault | Maximum Reality</title>
   <style>
-    /* SYSTEM CORE */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #000; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+    body { background: #000; color: #fff; font-family: -apple-system, sans-serif; }
+    header { padding: 15px; border-bottom: 1px solid #32cd32; text-align: center; background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); }
+    .home-btn { color: #32cd32; text-decoration: none; font-weight: 800; font-size: 0.7rem; border: 1px solid #32cd32; padding: 6px 12px; border-radius: 10px; text-transform: uppercase; }
     
-    /* NAVIGATION */
-    header { padding: 15px; border-bottom: 1px solid #32cd32; text-align: center; background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); }
-    .home-btn { color: #32cd32; text-decoration: none; font-weight: 800; font-size: 0.7rem; border: 1px solid #32cd32; padding: 8px 16px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; }
-
-    /* LAYOUT */
     .recipe-section { padding: 20px; max-width: 600px; margin: 0 auto; }
-    .cat-label { padding: 40px 0 15px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #222; margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between; }
+    .cat-label { padding: 30px 0 15px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #333; margin-bottom: 15px; }
     
-    /* CARDS */
-    .card { display: flex; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 22px; padding: 14px; text-decoration: none; color: white; margin-bottom: 12px; transition: 0.2s ease-in-out; }
-    .card:active { transform: scale(0.98); background: rgba(255,255,255,0.08); }
+    .card { display: flex; align-items: center; background: #111; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 18px; padding: 12px; text-decoration: none; color: white; margin-bottom: 12px; transition: 0.3s; }
+    .icon { width: 50px; height: 50px; border-radius: 12px; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 22px; background: #000; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.2); }
     
-    .icon { width: 55px; height: 55px; border-radius: 14px; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 24px; background: #000; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+    .info { flex-grow: 1; }
+    .name { font-weight: 700; font-size: 1rem; display: block; }
+    .tag { font-size: 0.6rem; font-weight: 800; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; margin-top: 4px; display: inline-block; }
+    .meta { font-size: 0.7rem; opacity: 0.4; display: block; margin-top: 4px; }
+    .btn-ui { font-size: 0.6rem; font-weight: 800; border: 1px solid; padding: 4px 8px; border-radius: 8px; margin-left: 10px; }
     
-    .info { flex-grow: 1; overflow: hidden; }
-    .name { font-weight: 700; font-size: 1.05rem; display: block; margin-bottom: 2px; }
-    .tag { font-size: 0.55rem; font-weight: 900; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; display: inline-block; margin-bottom: 4px; letter-spacing: 0.5px; }
-    .meta { font-size: 0.75rem; opacity: 0.5; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-    /* ACTION BUTTON */
-    .btn-stub { font-size: 0.65rem; font-weight: 900; text-transform: uppercase; padding: 8px 12px; border-radius: 12px; border: 1px solid; margin-left: 10px; flex-shrink: 0; }
-
-    /* SPECIAL EFFECTS */
-    .torch-zone { border-radius: 15px; padding: 15px; margin: 20px 0; font-size: 0.8rem; text-align: center; font-family: monospace; }
-    .new-badge { background: #32cd32; color: #000; padding: 2px 6px; border-radius: 4px; font-size: 0.6rem; margin-left: 10px; animation: pulse 1.5s infinite; }
-    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+    .torch-zone { border: 2px solid #ff3333; background: rgba(255, 51, 51, 0.1); padding: 15px; border-radius: 15px; margin: 20px 0; font-size: 0.8rem; line-height: 1.4; text-align: center; }
   </style>
 </head>
 <body>
 
   <header>
-    <a href="https://maximumreality.xyz" class="home-btn">🏠 Mainframe</a>
+    <a href="https://maximumreality.xyz" class="home-btn">🏠 Home Base</a>
   </header>
 
   <section class="recipe-section">
 
-    <div class="cat-label" style="color: #32cd32;">📡 Latest Transmission <span class="new-badge">LIVE</span></div>
+    <div class="cat-label" style="color: #32cd32;">📡 Latest Transmission</div>
     
     <a href="tuna-takedown.html" class="card" style="border-color: #32cd32; background: rgba(50, 205, 50, 0.05);">
       <div class="icon" style="border-color: #32cd32;">🍣</div>
       <div class="info">
-        <span class="tag" style="background: #32cd32; color: #000;">Snack Attack EP 02</span>
         <span class="name">Tuna Tartare Takedown</span>
+        <span class="tag" style="background: #32cd32; color: #000;">Snack Attack EP 02</span>
         <span class="meta">Deconstructed • Wasabi Cream • Michelin Chaos</span>
       </div>
-      <div class="btn-stub" style="border-color: #32cd32; color: #32cd32;">COOK</div>
+      <div class="btn-ui" style="color: #32cd32; border-color: #32cd32;">COOK</div>
     </a>
 
     <a href="https://maximum-reality-shop.fourthwall.com/" class="card" style="border-color: #ff00ff;">
       <div class="icon" style="border-color: #ff00ff;">🔴</div>
       <div class="info">
-        <span class="tag" style="background: #ff00ff; color: #fff;">Gear Drop</span>
         <span class="name">Mochkil's Red Apron</span>
-        <span class="meta">Official Chef Armor for high-heat missions.</span>
+        <span class="tag" style="background: #ff00ff; color: #fff;">Official Merch</span>
+        <span class="meta">Protect your gear from kitchen chaos.</span>
       </div>
-      <div class="btn-stub" style="border-color: #ff00ff; color: #ff00ff;">SHOP</div>
     </a>
 
     <div class="cat-label" style="color: #00f2ff;">🍱 Savory Archive</div>
 
-    <a href="poblano-omelet.html" class="card" style="border-color: #32cd32;">
-      <div class="icon" style="border-color: #32cd32;">🍳</div>
-      <div class="info">
-        <span class="tag" style="background: #32cd32; color: #000;">Fire Roasted</span>
-        <span class="name">Spicy Poblano Omelet</span>
-        <span class="meta">Smoky Poblano & Monterey Jack • Cayenne Spike</span>
-      </div>
-      <div class="btn-stub" style="border-color: #32cd32; color: #32cd32;">OPEN</div>
-    </a>
-
     <a href="preserved-lemons.html" class="card" style="border-color: #ffd700;">
       <div class="icon" style="border-color: #ffd700;">🫙</div>
       <div class="info">
-        <span class="tag" style="background: #ffd700; color: #000;">Core Component</span>
         <span class="name">Mochkil's Preserved Lemons</span>
-        <span class="meta">30-Day Cure • Essential Moroccan Fusion</span>
+        <span class="tag" style="background: #ffd700; color: #000;">Core Component</span>
+        <span class="meta">30-Day Cure • Essential for Moroccan Fusion</span>
       </div>
-      <div class="btn-stub" style="border-color: #ffd700; color: #ffd700;">INITIATE</div>
     </a>
 
     <a href="couscous.html" class="card" style="border-color: #ffd700;">
       <div class="icon" style="border-color: #ffd700;">🍚</div>
       <div class="info">
-        <span class="tag" style="border: 1px solid #ffd700; color: #ffd700;">Foundation</span>
         <span class="name">Secret Moroccan Couscous</span>
-        <span class="meta">Essential Tagine Pairing • Steam-Locked</span>
+        <span class="tag" style="border: 1px solid #ffd700; color: #ffd700;">Foundation Layer</span>
+        <span class="meta">Essential Tagine Pairing • Steam-Locked Grains</span>
       </div>
-      <div class="btn-stub" style="border-color: #ffd700; color: #ffd700;">OPEN</div>
+    </a>
+
+    <a href="pastilla-spices.html" class="card" style="border-color: #ffd700;">
+      <div class="icon" style="border-color: #ffd700;">🧂</div>
+      <div class="info">
+        <span class="name">Grandma's Secret Spice Blend</span>
+        <span class="tag" style="background: #ffd700; color: #000;">Classified Data</span>
+        <span class="meta">Essential Pastilla Matrix • Orange Blossom Salt</span>
+      </div>
+    </a>
+
+    <a href="mandarin-saute.html" class="card" style="border-color: #ff9900;">
+      <div class="icon" style="border-color: #ff9900;">🍊</div>
+      <div class="info">
+        <span class="name">Sautéed Mandarin Oranges</span>
+        <span class="tag" style="background: #ff9900; color: #000;">Wok Tech</span>
+        <span class="meta">Ginger-Garlic Infusion • Caramelized Citrus</span>
+      </div>
+    </a>
+
+    <a href="pizza.html" class="card">
+      <div class="icon" style="border-color: #00f2ff;">🍕</div>
+      <div class="info">
+        <span class="name">Tidal Wave Seafood Pizza</span>
+        <span class="tag" style="border: 1px solid #00f2ff; color: #00f2ff;">Opulence Tier</span>
+        <span class="meta">Mussels, Squid, and Shrimp.</span>
+      </div>
+    </a>
+
+    <a href="easter-feast.html" class="card" style="border-color: #00f2ff;">
+      <div class="icon" style="border-color: #00f2ff;">🐰</div>
+      <div class="info">
+        <span class="name">Mochkil's Easter Feast</span>
+        <span class="tag" style="background: #00f2ff; color: #000;">Seasonal</span>
+        <span class="meta">Rosemary Lamb • Neon Deviled Eggs</span>
+      </div>
+    </a>
+
+    <a href="corn-beef.html" class="card" style="border-color: #00ff00;">
+      <div class="icon" style="border-color: #00ff00;">🍀</div>
+      <div class="info">
+        <span class="name">Gourmet Corned Beef</span>
+        <span class="tag" style="background: #00ff00; color: #000;">ST. PADDY'S</span>
+        <span class="meta">Guinness Braised • Dijon Cream Sauce</span>
+      </div>
     </a>
 
     <a href="lamb-tagine.html" class="card" style="border-color: #ffd700;">
       <div class="icon" style="border-color: #ffd700;">🥘</div>
       <div class="info">
-        <span class="tag" style="border: 1px solid #ffd700; color: #ffd700;">Traditional Override</span>
         <span class="name">Moroccan Lamb Tagine</span>
+        <span class="tag" style="border: 1px solid #ffd700; color: #ffd700;">Traditional Override</span>
         <span class="meta">1.5hr Simmer • Cinnamon & Turmeric Matrix</span>
       </div>
-      <div class="btn-stub" style="border-color: #ffd700; color: #ffd700;">OPEN</div>
+    </a>
+
+    <a href="kung-pao.html" class="card" style="border-color: #ff3300;">
+      <div class="icon" style="border-color: #ff3300;">🌶️</div>
+      <div class="info">
+        <span class="name">Kung Pao Chicken</span>
+        <span class="tag" style="background: #ff3300; color: #fff;">Wok Tech</span>
+        <span class="meta">Peanut & Chili Matrix • Pair with Mandarin Oranges</span>
+      </div>
     </a>
 
     <a href="bicol-express.html" class="card" style="border-color: #00ff00;">
-      <div class="icon" style="border-color: #00ff00;">🌶️</div>
+      <div class="icon" style="border-color: #00ff00;">🥘</div>
       <div class="info">
-        <span class="tag" style="background: #00ff00; color: #000;">Filipino Heat</span>
         <span class="name">Bicol Express</span>
-        <span class="meta">Pork Belly & Coconut Cream • Thai Chili</span>
+        <span class="tag" style="background: #00ff00; color: #000;">Filipino Heat</span>
+        <span class="meta">Pork Belly & Coconut Cream • Thai Chili Spike</span>
       </div>
-      <div class="btn-stub" style="border-color: #00ff00; color: #00ff00;">LOAD</div>
     </a>
 
-    <a href="pizza.html" class="card" style="border-color: #00f2ff;">
-      <div class="icon" style="border-color: #00f2ff;">🍕</div>
+    <a href="soft-pretzels.html" class="card" style="border-color: #ffcc00;">
+      <div class="icon" style="border-color: #ffcc00;">🥨</div>
       <div class="info">
-        <span class="tag" style="border: 1px solid #00f2ff; color: #00f2ff;">Opulence Tier</span>
-        <span class="name">Tidal Wave Seafood Pizza</span>
-        <span class="meta">Mussels, Squid, and Shrimp Matrix.</span>
+        <span class="name">Extra Soft Pretzels</span>
+        <span class="tag" style="background: #ffcc00; color: #000;">Dough Tech</span>
+        <span class="meta">Baking Soda Boil Secret • Butter & Sesame Glaze</span>
       </div>
-      <div class="btn-stub" style="border-color: #00f2ff; color: #00f2ff;">GET</div>
     </a>
 
-    <div class="torch-zone" style="border: 2px solid #ff3333; background: rgba(255, 51, 51, 0.1); color: #ff3333;">
-      🔥 HOLIDAY PROTOCOL: Use the Flamethrower for the golden finish. <br>
-      <small style="opacity:0.8;">Drama is officially in season. 😂</small>
+    <a href="cheese-omelet.html" class="card" style="border-color: #00ff00;">
+      <div class="icon" style="border-color: #00ff00;">🍳</div>
+      <div class="info">
+        <span class="name">Triple Cheese Moroccan Omelet</span>
+        <span class="tag" style="background: #00ff00; color: #000;">Studio Fuel</span>
+        <span class="meta">Gruyère, Manchego & Kerkhane.</span>
+      </div>
+    </a>
+
+    <a href="octopus.html" class="card">
+      <div class="icon" style="border-color: #ffd700;">🐙</div>
+      <div class="info">
+        <span class="name">Grilled Octopus</span>
+        <span class="tag" style="border: 1px solid #ffd700; color: #ffd700;">Exotic Archive</span>
+        <span class="meta">Moroccan Chermoula Sauce.</span>
+      </div>
+    </a>
+
+    <a href="tomato-salad.html" class="card" style="border-color: #00ff00;">
+      <div class="icon" style="border-color: #00ff00;">🥗</div>
+      <div class="info">
+        <span class="name">Moroccan Tomato Salad</span>
+        <span class="tag" style="background: #00ff00; color: #000;">Fresh Refresh</span>
+        <span class="meta">Smoked Paprika Secret • Optional Azul-Heat</span>
+      </div>
+    </a>
+
+    <a href="tuna-casserole.html" class="card" style="border-color: #ffcc33;">
+      <div class="icon" style="border-color: #ffcc33;">🥘</div>
+      <div class="info">
+        <span class="name">Mac 'n Cheese Tuna Casserole</span>
+        <span class="tag" style="background: #ffcc33; color: #000;">Childhood Fav</span>
+        <span class="meta">Triple Cheese Matrix • Bubbly Comfort Tech</span>
+      </div>
+    </a>
+
+    <a href="poblano-omelet.html" class="card" style="border-color: #32cd32;">
+      <div class="icon" style="border-color: #32cd32;">🍳</div>
+      <div class="info">
+        <span class="name">Spicy Poblano Omelet</span>
+        <span class="tag" style="background: #32cd32; color: #000;">Fire Roasted</span>
+        <span class="meta">Smoky Poblano & Monterey Jack • Cayenne Spike</span>
+      </div>
+    </a>
+
+    <a href="spatzle.html" class="card">
+      <div class="icon" style="border-color: #00f2ff;">🍜</div>
+      <div class="info">
+        <span class="name">Spätzle mit Käsesoße</span>
+        <span class="tag" style="border: 1px solid #00f2ff; color: #00f2ff;">Studio Fuel</span>
+        <span class="meta">Azul's Quantum Physicist logic.</span>
+      </div>
+    </a>
+
+    <a href="coq-au-vin.html" class="card" style="border-color: #ffd700;">
+      <div class="icon" style="border-color: #ffd700;">🍷</div>
+      <div class="info">
+        <span class="name">Coq au Vin Marocain</span>
+        <span class="tag" style="background: #ffd700; color: #000;">Fusion Mode</span>
+        <span class="meta">Moroccan Cabernet • Cumin & Cilantro Twist</span>
+      </div>
+    </a>
+
+    <a href="brussels-crack.html" class="card" style="border-color: #00f2ff;">
+      <div class="icon" style="border-color: #00f2ff;">🥦</div>
+      <div class="info">
+        <span class="name">Brussels Sprouts "Crack"</span>
+        <span class="tag" style="background: #00f2ff; color: #000;">Fanatic Converter</span>
+        <span class="meta">Honey-Balsamic Glaze • Pecan Crunch Bomb</span>
+      </div>
+    </a>
+
+    <a href="paella.html" class="card" style="border-color: #00f2ff;">
+      <div class="icon" style="border-color: #00f2ff;">🎮</div>
+      <div class="info">
+        <span class="name">Moroccan Paella: Chaos Mode</span>
+        <span class="tag" style="background: #00f2ff; color: #000;">Game Outline Included</span>
+        <span class="meta">Shrimp, Mussels & Game Mechanics by Mochkil</span>
+      </div>
+    </a>
+
+    <a href="shrimp-avocado-bites.html" class="card" style="border-color: #ff00ff;">
+      <div class="icon" style="border-color: #ff00ff;">🍕</div>
+      <div class="info">
+        <span class="name">Shrimp Avocado Pizza Bites</span>
+        <span class="tag" style="background: #ff00ff; color: #fff;">Flavor Bomb</span>
+        <span class="meta">Cauliflower Crust • Fresh Avocado & Shrimp</span>
+      </div>
+    </a>
+
+    <a href="neon-miso.html" class="card" style="border-color: #ff00ff;">
+      <div class="icon" style="border-color: #ff00ff;">🍜</div>
+      <div class="info">
+        <span class="name">Neon Miso Noodles</span>
+        <span class="tag" style="background: #ff00ff; color: #fff;">Neon Magic</span>
+        <span class="meta">Pink Miso Base • Crispy Tofu Cubes</span>
+      </div>
+    </a>
+
+    <a href="hachis-parmentier.html" class="card" style="border-color: #ffaa00;">
+      <div class="icon" style="border-color: #ffaa00;">🥘</div>
+      <div class="info">
+        <span class="name">Mochkil's Hachis Parmentier</span>
+        <span class="tag" style="background: #ffaa00; color: #000;">French Tech</span>
+        <span class="meta">Beef & Mushroom Base • Double Cheese Potato Shield</span>
+      </div>
+    </a>
+
+    <a href="tacos.html" class="card">
+      <div class="icon" style="border-color: #00ff00;">🌮</div>
+      <div class="info">
+        <span class="name">Glazed Carnitas Tacos</span>
+        <span class="tag" style="background: #00ff00; color: #000;">Cinco De Mayo</span>
+        <span class="meta">Pumpkin Seed Green Sauce.</span>
+      </div>
+    </a>
+
+    <a href="steak-tartare.html" class="card" style="border-color: #ffd700;">
+      <div class="icon" style="border-color: #ffd700;">🥩</div>
+      <div class="info">
+        <span class="name">Moroccan Spice Steak Tartare</span>
+        <span class="tag" style="background: #ffd700; color: #000;">Gourmet Mode</span>
+        <span class="meta">Quail Egg Yolk • Moroccan Bread Pairing</span>
+      </div>
+    </a>
+
+    <a href="pastilla-bites.html" class="card" style="border-color: #ffd700;">
+      <div class="icon" style="border-color: #ffd700;">🕊️</div>
+      <div class="info">
+        <span class="name">H'mam Pastilla Bites</span>
+        <span class="tag" style="background: #ffd700; color: #000;">Premium Drop</span>
+        <span class="meta">Shredded Pigeon & Phyllo • Secret Spice Matrix</span>
+      </div>
+    </a>
+
+    <a href="turkey.html" class="card" style="border-color: #ffcc00;">
+      <div class="icon" style="border-color: #ffcc00;">🦃</div>
+      <div class="info">
+        <span class="name">Apple Cider Fried Turkey</span>
+        <span class="tag" style="background: #ffcc00; color: #000;">Thanksgiving 2026</span>
+        <span class="meta">Maple-Cider Glaze • Sage & Smoked Paprika</span>
+      </div>
+    </a>
+
+    <a href="brie.html" class="card" style="border-color: #ff3333;">
+      <div class="icon" style="border-color: #ff3333;">🎅</div>
+      <div class="info">
+        <span class="name">Cranberry Brie Crunches</span>
+        <span class="tag" style="background: #ff3333; color: #fff;">Christmas 2026</span>
+        <span class="meta">Brie, Orange Liqueur & Thyme.</span>
+      </div>
+    </a>
+
+    <div class="torch-zone">
+        🔥 HOLIDAY PROTOCOL: Use the Flamethrower for the golden finish. 
+        <br><small>Drama is officially in season. 😂</small>
     </div>
+
+    <a href="potpie.html" class="card" style="border-color: #00f2ff;">
+      <div class="icon" style="border-color: #00f2ff;">🥧</div>
+      <div class="info">
+        <span class="name">Moroccan Chicken Pot Pie</span>
+        <span class="tag" style="border: 1px solid #00f2ff; color: #00f2ff;">Ultimate Comfort</span>
+        <span class="meta">Cumin, Ginger & Preserved Lemons.</span>
+      </div>
+    </a>
 
     <div class="cat-label" style="color: #ff00ff;">🧁 Sweet Transmissions</div>
 
-    <a href="baghrir.html" class="card" style="border-color: #ff00ff;">
-      <div class="icon" style="border-color: #ff00ff;">🥞</div>
+    <a href="croquembouche.html" class="card" style="border-color: #ffd700;">
+      <div class="icon" style="border-color: #ffd700;">🗼</div>
       <div class="info">
-        <span class="tag" style="background: #ff00ff; color: #fff;">Magic Tech</span>
-        <span class="name">Mochkil's Magic Baghrir</span>
-        <span class="meta">Thousand-Hole Pancakes • Chaos Mode</span>
+        <span class="name">Lemon Lavender Croquembouche</span>
+        <span class="tag" style="background: #ffd700; color: #000;">New Year's 2026</span>
+        <span class="meta">Moroccan Twist • Lavender Infusion</span>
       </div>
-      <div class="btn-stub" style="border-color: #ff00ff; color: #ff00ff;">RENDER</div>
     </a>
 
     <a href="lava-cake.html" class="card" style="border-color: #ff4d4d;">
       <div class="icon" style="border-color: #ff4d4d;">🌋</div>
       <div class="info">
-        <span class="tag" style="background: #ff4d4d; color: #fff;">Molten Core</span>
         <span class="name">Chocolate Lava Cake</span>
+        <span class="tag" style="background: #ff4d4d; color: #fff;">Molten Core</span>
         <span class="meta">70% Cocoa • Secret Espresso Boost</span>
       </div>
-      <div class="btn-stub" style="border-color: #ff4d4d; color: #ff4d4d;">INDULGE</div>
     </a>
 
-    <a href="birthday-cake.html" class="card" style="border: 2px solid #ff00ff; box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);">
+    <a href="lemon-pie.html" class="card" style="border-color: #ff00ff;">
+      <div class="icon" style="border-color: #ff00ff;">🍋</div>
+      <div class="info">
+        <span class="name">Moroccan Twist Lemon Meringue</span>
+        <span class="tag" style="background: #ff00ff; color: #fff;">Fusion Archive</span>
+        <span class="meta">Almond Crust & Orange Blossom Water</span>
+      </div>
+    </a>
+
+    <a href="baghrir.html" class="card" style="border-color: #ff00ff;">
+      <div class="icon" style="border-color: #ff00ff;">🥞</div>
+      <div class="info">
+        <span class="name">Mochkil's Magic Baghrir</span>
+        <span class="tag" style="background: #ff00ff; color: #fff;">Magic Tech</span>
+        <span class="meta">Thousand-Hole Pancakes • Chaos Mode Enabled</span>
+      </div>
+    </a>
+
+    <a href="macarons.html" class="card" style="border-color: #ff00ff;">
+      <div class="icon" style="border-color: #ff00ff;">🧁</div>
+      <div class="info">
+        <span class="name">Secret Macaron Tutorial</span>
+        <span class="tag" style="background: #ff00ff; color: #fff;">Tutorial Mode</span>
+        <span class="meta">Aged Egg Whites • Raspberry & Mocha Fillings</span>
+      </div>
+    </a>
+
+    <a href="star-spangled-jars.html" class="card" style="border-color: #ff0000;">
+      <div class="icon" style="border-color: #ff0000;">🎆</div>
+      <div class="info">
+        <span class="name">Star-Spangled Cheesecake Jars</span>
+        <span class="tag" style="background: #ff0000; color: #fff;">Holiday Special</span>
+        <span class="meta">Layered Fruit & Whipped Cream</span>
+      </div>
+    </a>
+
+    <a href="dessert-burger.html" class="card" style="border-color: #ffcc00;">
+      <div class="icon" style="border-color: #ffcc00;">🍔</div>
+      <div class="info">
+        <span class="name">April Fools' Dessert Burger</span>
+        <span class="tag" style="background: #ffcc00; color: #000;">Illusion Tech</span>
+        <span class="meta">Donut Bun • Cake Patty • Mango Cheese</span>
+      </div>
+    </a>
+
+    <a href="truffles.html" class="card">
+      <div class="icon" style="border-color: #ff00ff;">👁️</div>
+      <div class="info">
+        <span class="name">Bleeding Eyeball Truffles</span>
+        <span class="tag" style="background: #ff00ff; color: #fff;">Halloween 2026</span>
+        <span class="meta">Oreo soil and raspberry blood.</span>
+      </div>
+    </a>
+
+    <a href="chocolate-strawberries.html" class="card" style="border-color: #ff007f;">
+      <div class="icon" style="border-color: #ff007f;">💖</div>
+      <div class="info">
+        <span class="name">Slap-Happy Rom-Com Berries</span>
+        <span class="tag" style="background: #ff007f; color: #fff;">Valentine's Special</span>
+        <span class="meta">Chocolate Snap Finish • Final Finale Slap</span>
+      </div>
+    </a>
+
+    <a href="birthday-cake.html" class="card" style="border: 2px solid #ff00ff; box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);">
       <div class="icon" style="color: #ff00ff;">🎂</div>
       <div class="info">
-        <span class="tag" style="background: #ff00ff; color: #000;">Special Event</span>
         <span class="name">Hacker Queen Birthday Cake</span>
-        <span class="meta">Chocolate Sponge • Neon Pink Velvet</span>
+        <span class="tag" style="background: #ff00ff; color: #000;">APRIL 27</span>
+        <span class="meta">Chocolate Sponge • Neon Pink Velvet Mousse</span>
       </div>
-      <div class="btn-stub" style="background: #ff00ff; color: #000; border: none;">CELEBRATE</div>
+      <div class="btn-ui" style="background: #ff00ff; color: #000; border: none;">CELEBRATE</div>
     </a>
 
   </section>
-
-  <footer style="text-align: center; padding: 40px; opacity: 0.3; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase;">
-    Maximum Reality // Sector 02 // Cooking System
-  </footer>
 
 </body>
 </html>
