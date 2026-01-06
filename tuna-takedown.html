@@ -129,6 +129,34 @@
 
     <a href="javascript:window.print()" class="print-btn">GENERATE_THERMAL_RECEIPT.EXE</a>
   </div>
+<script>
+  let pressTimer;
+  const chefNote = document.querySelector('.chef-note');
+
+  // Trigger on Long Press for iPhone
+  chefNote.addEventListener('touchstart', (e) => {
+    pressTimer = window.setTimeout(() => {
+      activateAzulOverride();
+    }, 1000); // 1 second hold
+  });
+
+  chefNote.addEventListener('touchend', () => {
+    clearTimeout(pressTimer);
+  });
+
+  function activateAzulOverride() {
+    chefNote.style.background = "rgba(0, 242, 255, 0.1)";
+    chefNote.style.borderColor = "#00f2ff";
+    chefNote.innerHTML = `
+      <div style="color: #00f2ff; font-family: monospace;">
+        <strong>[AZUL_OVERRIDE_ACTIVE]</strong><br>
+        "Mochkil's plating is inefficient. I've recalculated the tuna-to-wasabi ratio for maximum quantum stability. Also, he's using my medical tweezers again. Disgusting."
+      </div>
+    `;
+    // iPhone haptic feedback (vibration)
+    if (window.navigator.vibrate) window.navigator.vibrate(50);
+  }
+</script>
 
 </body>
 </html>
