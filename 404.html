@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | VAULT_BREACH</title>
+    <style>
+        :root { --neon-green: #39FF14; --alert-red: #ff003c; --bg-black: #050505; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background: var(--bg-black); 
+            color: var(--neon-green); 
+            font-family: 'Courier New', monospace; 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            overflow: hidden;
+        }
+
+        /* SCANLINE / SECURITY CAM OVERLAY */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .chef-warning { 
+            font-size: 50px; 
+            font-weight: 900; 
+            color: var(--alert-red);
+            text-shadow: 0 0 15px var(--alert-red);
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+        .vault-container { 
+            border: 2px solid var(--neon-green); 
+            padding: 25px; 
+            background: rgba(0, 255, 0, 0.03); 
+            max-width: 400px;
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.1);
+        }
+
+        .typing-box { 
+            font-size: 14px;
+            min-height: 60px;
+            color: var(--neon-green);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .return-link { 
+            display: inline-block;
+            margin-top: 20px; 
+            border: 1px solid var(--neon-green); 
+            padding: 12px 24px; 
+            color: var(--neon-green); 
+            text-decoration: none; 
+            font-size: 12px; 
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .return-link:active { background: var(--neon-green); color: black; }
+    </style>
+</head>
+<body>
+
+    <div class="chef-warning">VAULT BREACH</div>
+    
+    <div class="vault-container">
+        <p style="font-size: 10px; opacity: 0.6; margin-bottom: 15px;">[ MOCHKIL_SNACK_SECURITY_v1.0 ]</p>
+        
+        <div id="mochkil-msg" class="typing-box"></div>
+        
+        <p style="font-size: 11px; color: #666; font-style: italic;">
+            Packet loss in sector: recipes/vault <br>
+            Status: This link is absolutely NOT bussin'.
+        </p>
+
+        <a href="https://maximumreality.github.io/recipes/" class="return-link">> BACK_TO_KITCHEN</a>
+    </div>
+
+    <script>
+        const message = "STOP! You don't have clearance for my secret recipes. These snacks are for Michelin-star hackers only. Go back before I feed your data to Azul.";
+        let index = 0;
+        function typeWriter() {
+            if (index < message.length) {
+                document.getElementById("mochkil-msg").innerHTML += message.charAt(index);
+                index++;
+                setTimeout(typeWriter, 40);
+            }
+        }
+        window.onload = typeWriter;
+    </script>
+
+</body>
+</html>
