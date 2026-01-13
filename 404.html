@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 | VAULT_BREACH</title>
     <style>
-        :root { --neon-green: #39FF14; --alert-red: #ff003c; --bg-black: #050505; }
+        :root { --neon-green: #39FF14; --burnt-orange: #FF4500; --bg-black: #050505; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body { 
@@ -21,7 +21,7 @@
             overflow: hidden;
         }
 
-        /* SCANLINE / SECURITY CAM OVERLAY */
+        /* CRT SCANLINE OVERLAY */
         body::after {
             content: "";
             position: fixed;
@@ -36,13 +36,13 @@
         .chef-warning { 
             font-size: 50px; 
             font-weight: 900; 
-            color: var(--alert-red);
-            text-shadow: 0 0 15px var(--alert-red);
+            color: var(--burnt-orange);
+            text-shadow: 0 0 15px var(--burnt-orange);
             margin-bottom: 20px;
-            animation: pulse 1.5s infinite;
+            animation: flicker 0.15s infinite;
         }
 
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+        @keyframes flicker { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
 
         .vault-container { 
             border: 2px solid var(--neon-green); 
@@ -58,11 +58,19 @@
             color: var(--neon-green);
             margin-bottom: 20px;
             line-height: 1.4;
+            text-transform: uppercase;
+        }
+
+        .status-line {
+            font-size: 11px; 
+            color: #ff4500; 
+            font-weight: bold;
+            margin-top: 10px;
         }
 
         .return-link { 
             display: inline-block;
-            margin-top: 20px; 
+            margin-top: 25px; 
             border: 1px solid var(--neon-green); 
             padding: 12px 24px; 
             color: var(--neon-green); 
@@ -86,12 +94,11 @@
         
         <div id="mochkil-msg" class="typing-box"></div>
         
-        <p style="font-size: 11px; color: #666; font-style: italic;">
-            Packet loss in sector: recipes/vault <br>
-            Status: This link is absolutely NOT bussin'.
+        <p class="status-line">
+            STATUS: THIS LINK IS OFFICIALLY COOKED.
         </p>
 
-        <a href="https://maximumreality.github.io/recipes/" class="return-link">> BACK_TO_KITCHEN</a>
+        <a href="https://maximumreality.github.io/recipes/" class="return-link">> RE-ENTER THE KITCHEN</a>
     </div>
 
     <script>
@@ -101,7 +108,7 @@
             if (index < message.length) {
                 document.getElementById("mochkil-msg").innerHTML += message.charAt(index);
                 index++;
-                setTimeout(typeWriter, 40);
+                setTimeout(typeWriter, 35);
             }
         }
         window.onload = typeWriter;
